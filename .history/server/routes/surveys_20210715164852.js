@@ -9,7 +9,6 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-let moment = require('moment');
 
 // define the survey model
 let survey = require('../models/surveys');
@@ -21,24 +20,14 @@ router.get('/', (req, res, next) => {
         if (err) {
             return console.error(err);
         } else {
-            res.render('surveys/index', {  
-                title: 'Surveys',
-                surveys: surveys,
-                displayName: req.user ? req.user.displayName : '',
-                moment: moment
-            });
+            res.render('surveys/index', {title: 'Surveys', surveys: surveys});
         }
     });
 });
 
 //  GET the Survey Details page in order to add a new Survey
 router.get('/add', (req, res, next) => {
-    res.render('surveys/new', {
-        title: 'Add Survey',
-        surveys: {},
-        displayName: req.user ? req.user.displayName : '',
-        moment: moment
-    })
+    res.render('surveys/details', {title: 'Add Survey', surveys: {}})
 });
 
 // POST process the Survey Details page and create a new Survey - CREATE
@@ -48,8 +37,7 @@ router.post('/add', (req, res, next) => {
         "Owner": req.body.owner,
         "Questions": req.body.questions.trim().split(","),
         "Active": req.body.active ? true : false,
-        "StartDate": req.body.startdate,
-        "EndDate": req.body.enddate
+        "Lifespan": req.body.lifespan
     });
 
     survey.create(newSurvey, (err, survey) =>{
@@ -73,12 +61,7 @@ router.get('/edit/:id', (req, res, next) => {
             res.end(err);
         } else {
             //show the edit view
-            res.render('surveys/details', {
-                title: 'Edit Survey', 
-                surveys: surveyToEdit,
-                displayName: req.user ? req.user.displayName : '',
-                moment: moment
-            })
+            res.render('surveys/details', {title: 'Edit Survey', surveys: surveyToEdit})
         }
     });
 });
@@ -93,8 +76,7 @@ router.post('/edit/:id', (req, res, next) => {
         "Owner": req.body.owner,
         "Questions": req.body.questions.trim().split(","),
         "Active": req.body.active ? true : false,
-        "StartDate": req.body.startdate,
-        "EndDate": req.body.enddate
+        "Lifespan": req.body.lifespan
     });
 
     survey.updateOne({_id: id}, updatedSurvey, (err) => {
@@ -132,11 +114,7 @@ router.get('/:id', (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            res.render('surveys/view', {
-                title: 'Survey',
-                surveys: surveyToView,
-                displayName: req.user ? req.user.displayName : ''
-            })
+            res.render('surveys/view', {title: 'Survey', surveys: surveyToView})
         }
     });
 });

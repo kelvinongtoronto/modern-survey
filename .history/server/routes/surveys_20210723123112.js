@@ -9,7 +9,6 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-let moment = require('moment');
 
 // define the survey model
 let survey = require('../models/surveys');
@@ -24,8 +23,7 @@ router.get('/', (req, res, next) => {
             res.render('surveys/index', {  
                 title: 'Surveys',
                 surveys: surveys,
-                displayName: req.user ? req.user.displayName : '',
-                moment: moment
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
@@ -33,11 +31,10 @@ router.get('/', (req, res, next) => {
 
 //  GET the Survey Details page in order to add a new Survey
 router.get('/add', (req, res, next) => {
-    res.render('surveys/new', {
+    res.render('surveys/details', {
         title: 'Add Survey',
         surveys: {},
-        displayName: req.user ? req.user.displayName : '',
-        moment: moment
+        displayName: req.user ? req.user.displayName : ''
     })
 });
 
@@ -76,8 +73,7 @@ router.get('/edit/:id', (req, res, next) => {
             res.render('surveys/details', {
                 title: 'Edit Survey', 
                 surveys: surveyToEdit,
-                displayName: req.user ? req.user.displayName : '',
-                moment: moment
+                displayName: req.user ? req.user.displayName : ''
             })
         }
     });

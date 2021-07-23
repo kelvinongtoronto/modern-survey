@@ -2,7 +2,6 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-let passport = require('passport');
 
 // define the survey model
 let survey = require('../models/surveys');

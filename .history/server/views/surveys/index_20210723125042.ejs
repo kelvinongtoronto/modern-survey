@@ -45,27 +45,25 @@
                     <td class="text-center"><%= surveys[count].Owner %></td>
                     <td class="text-center"><%= surveys[count].Questions %></td>
                     <td class="text-center"><%= surveys[count].Active %></td>
-                    <td class="text-center"><%= moment(surveys[count].StartDate).format('YYYY-MM-DD') %></td>
-                    <td class="text-center"><%= moment(surveys[count].EndDate).format('YYYY-MM-DD') %></td>
+                    <td class="text-center"><%= surveys[count].StartDate %></td>
+                    <td class="text-center"><%= surveys[count].EndDate %></td>
                     <td class="text-center">
                       <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm"> View</a>
                     </td>
-                    <% if(surveys[count].Owner == displayName) { %>
                     <td class="text-center">
                       <a href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-warning btn-sm"> Edit</a>
                     </td>
                     <td class="text-center">
                       <a href="/surveys/delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
                     </td>
-                    <% } %>
                   <% } else { %>
                     <% if(surveys[count].Active) { %>
                       <td><%= surveys[count].Title %></td>
                       <td class="text-center"><%= surveys[count].Owner %></td>
                       <td class="text-center"><%= surveys[count].Questions.length %></td>
                       <td class="text-center"><%= surveys[count].Active %></td>
-                      <td class="text-center"><%= moment(surveys[count].StartDate).format('YYYY-MM-DD') %></td>
-                      <td class="text-center"><%= moment(surveys[count].EndDate).format('YYYY-MM-DD') %></td>
+                      <td class="text-center"><%= surveys[count].StartDate %></td>
+                      <td class="text-center"><%= surveys[count].EndDate %></td>
                       <td class="text-center">
                         <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm"> View</a>
                       </td>

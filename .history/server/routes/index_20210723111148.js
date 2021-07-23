@@ -2,25 +2,16 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-let passport = require('passport');
 
-// define the survey model
+// define the game model
 let survey = require('../models/surveys');
-
-// enable jwt
-let jwt = require('jsonwebtoken');
-let DB = require('../config/db');
-
-// create the User Model instance
-let userModel = require('../models/user');
-let User = userModel.User;
 
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
     res.render('content/index', {
         title: 'Home',
-        surveys: '',
-        displayName: req.user ? req.user.displayName : ''
+        displayName: req.user ? req.user.displayName : '',
+        surveys: ''
     });
 });
 
@@ -74,7 +65,7 @@ router.post('/login', (req, res, next) => {
             const authToken = jwt.sign(payload, DB.Secret, {
                 expiresIn: 604800 // 1 week
             });
-            return res.redirect('/surveys');
+            return res.redirect('/contact-list');
         });
     })(req, res, next);
 });
@@ -126,7 +117,7 @@ router.post('/register', (req, res, next) => {
         else
         {
             return passport.authenticate('local')(req, res, () => {
-                res.redirect('/surveys')
+                res.redirect('/contact-list')
             });
         }
     });

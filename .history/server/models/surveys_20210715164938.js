@@ -6,8 +6,7 @@ let Survey = mongoose.Schema({
     Owner: String,
     Questions: [String],
     Active: Boolean,
-    StartDate: Date,
-    EndDate : Date
+    Lifespan: String
 },
 {
     collection: "surveys"

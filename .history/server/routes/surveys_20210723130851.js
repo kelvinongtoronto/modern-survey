@@ -24,8 +24,7 @@ router.get('/', (req, res, next) => {
             res.render('surveys/index', {  
                 title: 'Surveys',
                 surveys: surveys,
-                displayName: req.user ? req.user.displayName : '',
-                moment: moment
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
@@ -37,7 +36,8 @@ router.get('/add', (req, res, next) => {
         title: 'Add Survey',
         surveys: {},
         displayName: req.user ? req.user.displayName : '',
-        moment: moment
+        moment: moment,
+        today: new Date()
     })
 });
 

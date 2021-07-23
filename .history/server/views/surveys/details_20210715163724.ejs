@@ -14,7 +14,7 @@
               <div class="form-group">
                 <label for="OwnerTextField">Owner</label>
                 <input type="text" class="form-control" id="OwnerTextField"
-                placeholder="Survey Owner" name="owner" value="<%= surveys.Owner %>" disabled required>
+                placeholder="Survey Owner" name="owner" value="<%= surveys.Owner %>"  required>
               </div>
               <div class="form-group">
                 <label for="QuestionsTextArea">Questions</label>
@@ -32,15 +32,11 @@
                 name="active" <%= surveys.Active ? "checked" : "" %>>
               </div>
               <div class="form-group">
-                <label for="StartDatePicker">Start Date</label>
-                <input type="date" class="form-control" id="StartDatePicker" name="startdate"
-                  value="<%= moment(surveys.StartDate).format('YYYY-MM-DD') %>" min="2020-01-01" max="2099-12-31" required>
+                <label for="LifespanTextField">Lifespan</label>
+                <input type="text" class="form-control" id="LifespanTextField"
+                placeholder="Survey Lifespan, in days" name="lifespan" value="<%= surveys.Lifespan %>"  required>
               </div>
-              <div class="form-group">
-                <label for="EndDatePicker">End Date</label>
-                <input type="date" class="form-control" id="EndDatePicker" name="enddate"
-                  value="<%= moment(surveys.EndDate).format('YYYY-MM-DD') %>" min="2020-01-01" max="2099-12-31" required>
-              </div>
+
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/surveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </form>
