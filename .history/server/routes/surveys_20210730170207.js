@@ -2,6 +2,7 @@
  * Kelvin Ong
  * 301178688
  * Project - surveys site
+ * June 25, 2021
  */
 
 // modules required for routing
@@ -12,7 +13,7 @@ let moment = require('moment');
 
 // define the survey model
 let survey = require('../models/surveys');
-let question = 
+
 /* GET surveys List page. READ */
 router.get('/', (req, res, next) => {
     // find all surveys in the surveys collection
@@ -45,7 +46,7 @@ router.post('/add', (req, res, next) => {
     let newSurvey = survey({
         "Title": req.body.title,
         "Owner": req.body.owner,
-        "Questions": req.body.questions.trim().split("\n"),
+        "Questions": req.body.questions.trim().split(","),
         "Active": req.body.active ? true : false,
         "StartDate": req.body.startdate,
         "EndDate": req.body.enddate
@@ -90,7 +91,7 @@ router.post('/edit/:id', (req, res, next) => {
         "_id": id,
         "Title": req.body.title,
         "Owner": req.body.owner,
-        "Questions": req.body.questions.trim().split("\n"),
+        "Questions": req.body.questions.trim().split(","),
         "Active": req.body.active ? true : false,
         "StartDate": req.body.startdate,
         "EndDate": req.body.enddate
@@ -142,7 +143,8 @@ router.get('/:id', (req, res, next) => {
 
 // POST - submit the Survey
 router.post('/:id', (req, res, next) => {
-    res.redirect('/surveys');
+    alert("Survey Submitted");
+    res.redirect("/");
 });
 
 module.exports = router;

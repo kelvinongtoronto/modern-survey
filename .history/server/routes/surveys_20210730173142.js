@@ -2,6 +2,7 @@
  * Kelvin Ong
  * 301178688
  * Project - surveys site
+ * June 25, 2021
  */
 
 // modules required for routing
@@ -141,8 +142,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - submit the Survey
-router.post('/:id', (req, res, next) => {
-    res.redirect('/surveys');
-});
+router.post('/:id', (req, res, next) => {});
 
 module.exports = router;

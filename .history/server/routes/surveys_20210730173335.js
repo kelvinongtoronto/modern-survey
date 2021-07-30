@@ -141,8 +141,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - submit the Survey
-router.post('/:id', (req, res, next) => {
-    res.redirect('/surveys');
-});
+router.post('/:id', (req, res, next) => { res.redirect('/surveys'); });
 
 module.exports = router;
