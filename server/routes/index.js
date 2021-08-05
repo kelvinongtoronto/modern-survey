@@ -5,7 +5,7 @@ let mongoose = require('mongoose');
 let passport = require('passport');
 
 // define the survey model
-let survey = require('../models/surveys');
+//let survey = require('../models/surveys');
 
 // enable jwt
 let jwt = require('jsonwebtoken');
@@ -15,10 +15,19 @@ let DB = require('../config/db');
 let userModel = require('../models/user');
 let User = userModel.User;
 
-/* GET home page. wildcard */
+/* GET home page. */
 router.get('/', (req, res, next) => {
     res.render('content/index', {
         title: 'Home',
+        surveys: '',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
+
+/* GET thank you page. */
+router.get('/thankyou', (req, res, next) => {
+    res.render('content/thankyou', {
+        title: 'Thank You',
         surveys: '',
         displayName: req.user ? req.user.displayName : ''
     });

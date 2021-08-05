@@ -12,7 +12,8 @@ let moment = require('moment');
 
 // define the survey model
 let survey = require('../models/surveys');
-let question = 
+let answers = require('../models/answers');
+
 /* GET surveys List page. READ */
 router.get('/', (req, res, next) => {
     // find all surveys in the surveys collection
@@ -142,7 +143,27 @@ router.get('/:id', (req, res, next) => {
 
 // POST - submit the Survey
 router.post('/:id', (req, res, next) => {
-    res.redirect('/surveys');
+    let id = req.params.id;
+    let submitAnswers = [];
+    for(var value in req.body){
+        submitAnswers.push(req.body[value]);
+    }
+    let submitdate = Date.now();
+
+    let submitSurvey = answers({
+        "Survey": id,
+        "Answers": submitAnswers,
+        "SubmitDate": submitdate
+    });
+
+    answers.create(submitSurvey, (err, answers) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.redirect('/thankyou');
+        }
+    });
 });
 
 module.exports = router;
