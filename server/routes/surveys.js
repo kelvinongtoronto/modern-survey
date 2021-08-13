@@ -1,9 +1,3 @@
-/* surveys.js
- * Kelvin Ong
- * 301178688
- * Project - surveys site
- */
-
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -162,6 +156,26 @@ router.post('/:id', (req, res, next) => {
             res.end(err);
         } else {
             res.redirect('/thankyou');
+        }
+    });
+});
+
+// GET - view a Survey's responses
+router.get('/responses/:id', (req, res, next) => {
+    let id = req.params.id;
+
+    //survey.findById(id, (err, surveyToView) => {
+    answers.find({Survey:id}, (err, responses) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            res.render('surveys/responses', {
+                title: 'Responses',
+                answers: responses,
+                displayName: req.user ? req.user.displayName : '',
+                moment: moment
+            })
         }
     });
 });

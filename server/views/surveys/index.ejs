@@ -38,32 +38,36 @@
 
             <tbody>
               <!-- Template Row -->
+              <% let today = new Date() %>
               <% for (let count = 0; count < surveys.length; count++) { %>
                 <tr>
                   <% if(typeof displayName == 'string' && displayName) { %>
                     <td><%= surveys[count].Title %></td>
                     <td class="text-center"><%= surveys[count].Owner %></td>
-                    <td class="text-center"><%= surveys[count].Questions %></td>
-                    <td class="text-center"><%= surveys[count].Active %></td>
+                    <td class="text-center"><%= surveys[count].Questions.length %></td>
+                    <td class="text-center"><%= surveys[count].Active ? "Yes" : "No" %></td>
                     <td class="text-center"><%= moment(surveys[count].StartDate).format('YYYY-MM-DD') %></td>
                     <td class="text-center"><%= moment(surveys[count].EndDate).format('YYYY-MM-DD') %></td>
                     <td class="text-center">
                       <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm"> View</a>
                     </td>
                     <% if(surveys[count].Owner == displayName) { %>
-                    <td class="text-center">
-                      <a href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-warning btn-sm"> Edit</a>
-                    </td>
-                    <td class="text-center">
-                      <a href="/surveys/delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
-                    </td>
+                      <td class="text-center">
+                        <a href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-warning btn-sm"> Edit</a>
+                      </td>
+                      <td class="text-center">
+                        <a href="/surveys/delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm"> Delete</a>
+                      </td>
+                      <td class="text-center">
+                        <a href="/surveys/responses/<%= surveys[count]._id %>" class="btn btn-info btn-sm"> See Responses</a>
+                      </td>
                     <% } %>
                   <% } else { %>
-                    <% if(surveys[count].Active) { %>
+                    <% if(surveys[count].Active && surveys[count].StartDate <= today && surveys[count].EndDate >= today) { %>
                       <td><%= surveys[count].Title %></td>
                       <td class="text-center"><%= surveys[count].Owner %></td>
                       <td class="text-center"><%= surveys[count].Questions.length %></td>
-                      <td class="text-center"><%= surveys[count].Active %></td>
+                      <td class="text-center"><%= surveys[count].Active ? "Yes" : "No" %></td>
                       <td class="text-center"><%= moment(surveys[count].StartDate).format('YYYY-MM-DD') %></td>
                       <td class="text-center"><%= moment(surveys[count].EndDate).format('YYYY-MM-DD') %></td>
                       <td class="text-center">

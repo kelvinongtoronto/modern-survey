@@ -1,0 +1,45 @@
+<% include ../partials/header.ejs %>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <% if(typeof displayName == 'string' && displayName) { %>
+                <h3>Responses </h3>
+                <!--<a href="/" class="btn btn-primary"><i class="fas fa-file-csv"></i> Download csv</a>-->
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <!-- Header Row -->
+                            <tr>
+                                <th>Date and Time Submitted</th>
+                                <th>Responses</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- Template Row -->
+                            <% for (let count = 0; count < answers.length; count++) { %>
+                                <tr>
+                                    <td><%= moment(answers[count].SubmitDate).format('YYYY-MM-DD HH:mm:ss') %></td>
+                                    <td><%= answers[count].Answers %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-offset-1 col-md-10 text-center">
+                    <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                </div>
+            <% } else { %>
+                <h3>You cannot view this page</h3>
+                <p>Please <a href="/login">log in</a>.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>
+
+

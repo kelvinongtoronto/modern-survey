@@ -4,7 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
-          <h1><%= title %></h1>
+          <% if(typeof displayName == 'string' && displayName) { %>
+            <h1><%= title %></h1>
             <form class="form" method="post">
               <div class="form-group">
                 <label for="TitleTextField">Title</label>
@@ -24,7 +25,7 @@
                     name="questions" 
                     required>
                 </textarea>
-                <p><i class="fa fa-exclamation-circle"></i>Tip: Enter a question on each line, and if there are any, separate multiple choice responses with semicolons,
+                <p><i class="fas fa-exclamation-circle"></i>Tip: Enter a question on each line, and if there are any, separate multiple choice responses with semicolons,
                    i.e.: Question;Answer 1;Answer 2;etc. Otherwise, question will have a text box.</p>
               </div>
               <div class="form-group">
@@ -45,6 +46,10 @@
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/surveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </form>
+          <% } else { %>
+            <h3>You cannot view this page</h3>
+            <p>Please <a href="/login">log in</a>.</p>
+          <% } %>
         </div>
       </div>
     </div>
