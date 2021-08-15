@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-offset-1 col-md-10">
-        <h3>Surveys List </h3>
+        <h1>Surveys List </h1>
         <% if(typeof displayName == 'string' && displayName) { %>
           <a href="/surveys/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
         <%}%>
@@ -48,9 +48,19 @@
                     <td class="text-center"><%= surveys[count].Active ? "Yes" : "No" %></td>
                     <td class="text-center"><%= moment(surveys[count].StartDate).format('YYYY-MM-DD') %></td>
                     <td class="text-center"><%= moment(surveys[count].EndDate).format('YYYY-MM-DD') %></td>
-                    <td class="text-center">
-                      <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm"> View</a>
-                    </td>
+                    <% if(surveys[count].Active && surveys[count].StartDate <= today && surveys[count].EndDate >= today) { %>
+                      <td class="text-center">
+                        <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm"> View</a>
+                      </td>
+                    <% } else { %>
+                      <td>
+                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Survey not active">
+                          <button class="btn btn-primary btn-sm" style="pointer-events: none;" type="button" disabled>
+                            View
+                          </button>
+                        </span>
+                      </td>
+                    <% } %>
                     <% if(surveys[count].Owner == displayName) { %>
                       <td class="text-center">
                         <a href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-warning btn-sm"> Edit</a>
@@ -61,6 +71,10 @@
                       <td class="text-center">
                         <a href="/surveys/responses/<%= surveys[count]._id %>" class="btn btn-info btn-sm"> See Responses</a>
                       </td>
+                    <% } else { %>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     <% } %>
                   <% } else { %>
                     <% if(surveys[count].Active && surveys[count].StartDate <= today && surveys[count].EndDate >= today) { %>

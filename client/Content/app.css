@@ -1,5 +1,150 @@
 /* Custom CSS goes here */
 body {
   padding-bottom: 70px;
-  }
+  background-color: #21c0ad
+}
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0B403A;
+  color: lightgray;
+  text-align: center;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.card {
+  border: none
+}
+
+.text {
+  font-size: 20px;
+  color: #383737ba;
+  font-weight: 500
+}
+
+.circle1 {
+  background-color: #faefd1
+}
+
+.circle2 {
+  background-color: #F3E5F5
+}
+
+.circle3 {
+  background-color: #e5fae9
+}
+
+.about {
+  font-size: 14px;
+  font-weight: 35px;
+  color: #697087
+}
+
+.learnmore1 {
+  font-size: 18px;
+  font-weight: 50px;
+  color: #fec734
+}
+
+.learnmore2 {
+  font-size: 18px;
+  font-weight: 50px;
+  color: #fd9790
+}
+
+.learnmore3 {
+  font-size: 18px;
+  font-weight: 50px;
+  color: #4DB6AC
+}
+
+.circle1 .fa-chrome {
+  color: #fec734;
+  font-size: 40px
+}
+
+.circle2 .fa-chrome {
+  color: #fd9790;
+  font-size: 40px
+}
+
+.circle3 .fa-chrome {
+  color: #42a593;
+  font-size: 40px
+}
+
+/* End */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style inputs . 
+This css code is used for contact page form
+Source: w3schools.com
+*/
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+/* Create two columns that float next to eachother */
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+h1{
+  font-style: italic;
+  text-align: center;
+  background-color: aliceblue;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
