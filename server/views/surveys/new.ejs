@@ -41,7 +41,7 @@
               <div class="form-group">
                 <label for="EndDatePicker">End Date</label>
                 <input type="date" class="form-control" id="EndDatePicker" name="enddate"
-                  value="<%= moment().format('YYYY-MM-DD') %>" min="2020-01-01" max="2099-12-31" required>
+                  value="<%= moment().add(1,'days').format('YYYY-MM-DD') %>" min="2020-01-01" max="2099-12-31" required>
               </div>
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/surveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>

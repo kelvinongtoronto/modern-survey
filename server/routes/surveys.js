@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
         } else {
             res.render('surveys/index', {  
                 title: 'Surveys',
-                surveys: surveys,
+                surveys: surveys.sort((a,b) => (a._id < b._id ? 1 : -1)),
                 displayName: req.user ? req.user.displayName : '',
                 moment: moment
             });
